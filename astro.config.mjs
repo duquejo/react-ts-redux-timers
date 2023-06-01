@@ -8,6 +8,7 @@ export default defineConfig({
 	site: 'https://duquejo01.github.io',
 	compressHTML: true,
 	output: 'static',
+	base: '/react-ts-redux-timers',
 	integrations: [
 		tailwind({
 			config: { applyBaseStyles: false },

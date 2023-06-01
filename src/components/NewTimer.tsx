@@ -1,8 +1,8 @@
 import { ChangeEvent, FC, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addTimer, deleteTimer } from '../actions';
+import { addTimer } from '../actions';
 
-const NewTimer: FC<any> = () => {
+export const NewTimer: FC<any> = () => {
 	const [name, setName] = useState<string>('');
 	const dispatch = useDispatch();
 
@@ -28,5 +28,3 @@ const NewTimer: FC<any> = () => {
 		</div>
 	);
 };
-
-export default NewTimer;

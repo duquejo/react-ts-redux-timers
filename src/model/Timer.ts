@@ -1,4 +1,4 @@
-class Timer {
+export class Timer {
 	public name;
 	public time;
 	public isRunning;
@@ -8,5 +8,3 @@ class Timer {
 		this.isRunning = false;
 	}
 }
-
-export default Timer;

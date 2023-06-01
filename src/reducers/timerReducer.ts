@@ -1,5 +1,5 @@
 import { NAMED_ACTIONS } from '../actions/timer.enum';
-import Timer from '../model/Timer';
+import { Timer } from '../model/Timer';
 
 export interface IAction {
 	type: NAMED_ACTIONS;
@@ -12,7 +12,7 @@ export interface IAction {
 
 const initialState: Array<Timer> = [];
 
-const timerReducer = (state = initialState, action: IAction) => {
+export const timerReducer = (state = initialState, action: IAction) => {
 	switch (action.type) {
 		/**
 		 * Add a new timer, return a copy of state.
@@ -65,5 +65,3 @@ const timerReducer = (state = initialState, action: IAction) => {
 			return state;
 	}
 };
-
-export default timerReducer;

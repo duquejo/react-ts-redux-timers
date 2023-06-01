@@ -1,8 +1,8 @@
 import { useSelector } from 'react-redux';
-import type Timer from '../model/Timer';
-import SingleTimerView from './SingleTimerView';
+import type { Timer } from '../model/Timer';
+import { SingleTimerView } from './SingleTimerView';
 
-const ListTimers = () => {
+export const ListTimers = () => {
 	const timers = useSelector((state: any) => state.timers);
 	return (
 		<>
@@ -12,5 +12,3 @@ const ListTimers = () => {
 		</>
 	);
 };
-
-export default ListTimers;

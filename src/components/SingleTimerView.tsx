@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import type Timer from '../model/Timer';
+import type { Timer } from '../model/Timer';
 import { useDispatch } from 'react-redux';
 import { deleteTimer, toggleTimer } from '../actions';
 import { formatTime } from '../utils';
@@ -9,7 +9,7 @@ interface ITimerViewProps {
 	timer: Timer;
 }
 
-const SingleTimerView: FC<ITimerViewProps> = ({ index, timer }) => {
+export const SingleTimerView: FC<ITimerViewProps> = ({ index, timer }) => {
 	const dispatch = useDispatch();
 	const handleOnClickStatus = () => {
 		dispatch(toggleTimer(index));
@@ -33,5 +33,3 @@ const SingleTimerView: FC<ITimerViewProps> = ({ index, timer }) => {
 		</div>
 	);
 };
-
-export default SingleTimerView;

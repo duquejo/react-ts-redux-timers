@@ -12,8 +12,8 @@ import {
 	saveState,
 } from '../utils';
 import combineReducers from '../reducers';
-import NewTimer from '../components/NewTimer';
-import ListTimers from '../components/ListTimers';
+import { NewTimer } from '../components/NewTimer';
+import { ListTimers } from '../components/ListTimers';
 
 const store: Store = createStore(
 	combineReducers,
@@ -27,7 +27,7 @@ store.subscribe(
 	}, CONSTANTS_VALUES[CONSTANTS_KEYS.STATE_THROTTLE])
 );
 
-function ReduxProvider(): JSX.Element {
+export const ReduxProvider = (): JSX.Element => {
 	let lastUpdateTime = Date.now();
 	setInterval(() => {
 		const now = Date.now();
@@ -42,6 +42,4 @@ function ReduxProvider(): JSX.Element {
 			<ListTimers />
 		</Provider>
 	);
-}
-
-export default ReduxProvider;
+};

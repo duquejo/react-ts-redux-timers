@@ -7,6 +7,7 @@ import react from '@astrojs/react';
 export default defineConfig({
 	site: 'https://duquejo01.github.io',
 	output: 'static',
+	base: '/react-ts-redux-timers',
 	integrations: [
 		tailwind({
 			config: { applyBaseStyles: false },

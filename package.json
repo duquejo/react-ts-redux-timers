@@ -2,11 +2,11 @@
 	"name": "react-ts-astro-timers",
 	"type": "module",
 	"version": "0.0.1",
-	"private": true,
 	"scripts": {
 		"dev": "astro dev",
 		"start": "astro dev",
 		"build": "astro build",
+		"check": "astro check",
 		"preview": "astro preview",
 		"astro": "astro",
 		"prettify": "prettier --write ."

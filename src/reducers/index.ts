@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux';
 
-import { timerReducer } from './timerReducer';
-import { selectedTimerReducer } from './selectTimer';
+import timerReducer from './timerReducer';
+import selectedTimerReducer from './selectTimer';
 
-export default combineReducers({
+const rootReducer = combineReducers({
 	timers: timerReducer, // Array
 	selectedTimer: selectedTimerReducer, // number
 });
+
+export default rootReducer;

@@ -1,6 +1,6 @@
 {
 	"tabWidth": 4,
 	"useTabs": true,
-	"jsxSingleQuote": true,
+	"jsxSingleQuote": false,
 	"singleQuote": true
 }

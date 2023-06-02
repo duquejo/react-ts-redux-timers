@@ -6,17 +6,16 @@ import { devToolsEnhancer } from 'redux-devtools-extension';
 
 import { update } from '../actions';
 import {
-	CONSTANTS_KEYS,
-	CONSTANTS_VALUES,
 	loadState,
 	saveState,
 } from '../utils';
-import combineReducers from '../reducers';
+import rootReducer from '../reducers';
 import { NewTimer } from '../components/NewTimer';
 import { ListTimers } from '../components/ListTimers';
+import { CONSTANTS_KEYS, CONSTANTS_VALUES } from '../types/constants';
 
 const store: Store = createStore(
-	combineReducers,
+	rootReducer,
 	loadState(),
 	devToolsEnhancer({})
 );

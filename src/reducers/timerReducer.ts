@@ -1,18 +1,13 @@
-import { NAMED_ACTIONS } from '../actions/timer.enum';
 import { Timer } from '../model/Timer';
+import {
+	IAction,
+	NAMED_ACTIONS,
+	TimerReducerState,
+} from '../types/actions.types';
 
-export interface IAction {
-	type: NAMED_ACTIONS;
-	payload: {
-		index: number;
-		name: string;
-		deltaTime: number;
-	};
-}
+const initialState: TimerReducerState = [];
 
-const initialState: Array<Timer> = [];
-
-export const timerReducer = (state = initialState, action: IAction) => {
+const timerReducer = (state = initialState, action: IAction) => {
 	switch (action.type) {
 		/**
 		 * Add a new timer, return a copy of state.
@@ -61,7 +56,24 @@ export const timerReducer = (state = initialState, action: IAction) => {
 				return index !== indexToErase;
 			});
 
+		/**
+		 * Reset an existing timer
+		 */
+		case NAMED_ACTIONS.RESET_TIMER:
+			const indexToReset = action.payload.index;
+			return state.map((timer: Timer, i: number) => {
+				if (i === indexToReset) {
+					return {
+						...timer,
+						time: 0,
+					};
+				}
+				return timer;
+			});
+
 		default:
 			return state;
 	}
 };
+
+export default timerReducer;

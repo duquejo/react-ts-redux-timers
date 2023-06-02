@@ -28,26 +28,30 @@
 	}
 
 	.timer-view {
-		@apply w-96 flex flex-row justify-between items-baseline flex-nowrap;
+		@apply w-56 grid grid-cols-2 items-baseline;
 	}
 
 	.timer-view > h1 {
-		@apply flex-1 m-4 text-left tabular-nums text-2xl font-mono font-extralight;
+		@apply m-4 text-center tabular-nums text-xl font-mono font-extralight;
 	}
 
 	.timer-view > h2 {
-		@apply flex-1 font-bold;
+		@apply font-bold text-center;
 	}
 
-	.timer-view > button {
-		@apply px-1 py-2 rounded-xl font-semibold text-sm w-16 last:ml-2 shadow-sm text-white;
+	.timer-buttons {
+		@apply flex col-span-2 text-center justify-between;
 	}
 
-	.timer-view > button.isRunning {
+	.timer-buttons > button {
+		@apply px-1 py-2 mx-2 rounded-xl font-semibold text-sm w-16 shadow-sm text-white last:mx-0 first:mx-0;
+	}
+
+	.timer-buttons > button.isRunning {
 		@apply bg-gradient-to-r from-green-700 to-emerald-700;
 	}
 
-	.timer-view > button.isStopped {
+	.timer-buttons > button.isStopped {
 		@apply bg-gradient-to-r from-rose-700 to-red-700;
 	}
 }

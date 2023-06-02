@@ -1,22 +1,40 @@
-export enum CONSTANTS_KEYS {
-	TIMERS_STATE = 'TIMERS_STATE',
-	STATE_THROTTLE = 'STATE_THROTTLE',
-	STATE_INTERVAL = 'STATE_INTERVAL',
-}
+import { CONSTANTS_KEYS, CONSTANTS_VALUES } from '../types/constants';
 
-export const CONSTANTS_VALUES = {
-	[CONSTANTS_KEYS.STATE_THROTTLE]: 1000,
-	[CONSTANTS_KEYS.STATE_INTERVAL]: 50,
-};
-
+/**
+ * The function formats a given time in milliseconds into a string in the format of
+ * hours:minutes:seconds.milliseconds.
+ * @param {number} time - The time parameter is a number representing a duration in milliseconds.
+ * @returns The function `formatTime` returns a string in the format of
+ * "hours:minutes:seconds.milliseconds" based on the input `time` value in milliseconds.
+ */
 export const formatTime = (time: number): string => {
-	const ms = Math.round(time / 100) % 10;
-	const secs = Math.floor(time / 1000) % 60;
-	const mins = Math.floor(time / 1000 / 60) % 60;
-	const hours = Math.floor(time / 1000 / 1000 / 60) % 60;
+	const ms =
+		Math.round(time / CONSTANTS_VALUES.MS_VALUE) %
+		CONSTANTS_VALUES.MS_ROUND;
+	const secs =
+		Math.floor(time / CONSTANTS_VALUES.MS_SECS) %
+		CONSTANTS_VALUES.HOUR_ROUND;
+	const mins =
+		Math.floor(
+			time / CONSTANTS_VALUES.MS_SECS / CONSTANTS_VALUES.MS_HOURS
+		) % CONSTANTS_VALUES.HOUR_ROUND;
+	const hours =
+		Math.floor(
+			time /
+				CONSTANTS_VALUES.MS_SECS /
+				CONSTANTS_VALUES.MS_MINS /
+				CONSTANTS_VALUES.MS_HOURS
+		) % CONSTANTS_VALUES.HOUR_ROUND;
 	return `${hours}:${mins}:${secs}.${ms}`;
 };
 
+/**
+ * This function loads and returns the state of timers from local storage if it exists, otherwise it
+ * returns undefined.
+ * @returns The `loadState` function returns an object if there is a serialized state in the local
+ * storage, otherwise it returns `undefined`. If there is an
+ * error while parsing the serialized state, it also returns `undefined`.
+ */
 export const loadState = (): Object | undefined => {
 	try {
 		let serializedState = localStorage.getItem(CONSTANTS_KEYS.TIMERS_STATE);
@@ -28,6 +46,11 @@ export const loadState = (): Object | undefined => {
 	}
 };
 
+/**
+ * The function saves the state object to local storage as a serialized JSON string.
+ * @param {any} state - The state parameter is of type "any", which means it can be any data type. In
+ * this case, it is the state object that needs to be saved to the local storage.
+ */
 export const saveState = (state: any): void => {
 	try {
 		const serializedState = JSON.stringify(state);

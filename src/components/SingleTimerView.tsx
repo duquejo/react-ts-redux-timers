@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import type { Timer } from '../model/Timer';
 import { useDispatch } from 'react-redux';
-import { deleteTimer, toggleTimer } from '../actions';
+import { deleteTimer, resetTimer, toggleTimer } from '../actions';
 import { formatTime } from '../utils';
 
 interface ITimerViewProps {
@@ -17,19 +17,27 @@ export const SingleTimerView: FC<ITimerViewProps> = ({ index, timer }) => {
 	const handleOnClickDelete = () => {
 		dispatch(deleteTimer(index));
 	};
+	const handleOnClickReset = () => {
+		dispatch(resetTimer(index));
+	};
 	return (
-		<div className='timer-view'>
+		<div className="timer-view">
 			<h2>{timer.name}</h2>
 			<h1>{formatTime(timer.time)}</h1>
-			<button
-				className={timer.isRunning ? 'isStopped' : 'isRunning'}
-				onClick={handleOnClickStatus}
-			>
-				{timer.isRunning ? 'Stop' : 'Start'}
-			</button>
-			<button className='bg-black' onClick={handleOnClickDelete}>
-				Delete
-			</button>
+			<div className="timer-buttons">
+				<button
+					className={timer.isRunning ? 'isStopped' : 'isRunning'}
+					onClick={handleOnClickStatus}
+				>
+					{timer.isRunning ? 'Stop' : 'Start'}
+				</button>
+				<button className="bg-cyan-800" onClick={handleOnClickReset}>
+					Reset
+				</button>
+				<button className="bg-black" onClick={handleOnClickDelete}>
+					Delete
+				</button>
+			</div>
 		</div>
 	);
 };

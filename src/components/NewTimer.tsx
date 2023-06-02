@@ -15,12 +15,12 @@ export const NewTimer: FC<any> = () => {
 	};
 
 	return (
-		<div className='new-timer'>
+		<div className="new-timer">
 			<input
-				type='text'
-				name='name'
-				placeholder='New timer name'
-				id='name'
+				type="text"
+				name="name"
+				placeholder="New timer name"
+				id="name"
 				value={name}
 				onChange={handleOnChange}
 			/>

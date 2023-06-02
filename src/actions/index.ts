@@ -1,9 +1,4 @@
-import { NAMED_ACTIONS } from './timer.enum';
-
-interface IAction {
-	type: NAMED_ACTIONS;
-	payload: any;
-}
+import { IAction, NAMED_ACTIONS } from '../types/actions.types';
 
 const addTimer = (name: string): IAction => ({
 	type: NAMED_ACTIONS.NEW_TIMER,
@@ -25,9 +20,14 @@ const deleteTimer = (index: number): IAction => ({
 	payload: { index },
 });
 
+const resetTimer = (index: number): IAction => ({
+	type: NAMED_ACTIONS.RESET_TIMER,
+	payload: { index },
+});
+
 const update = (deltaTime: number): IAction => ({
 	type: NAMED_ACTIONS.UPDATE,
 	payload: { deltaTime },
 });
 
-export { addTimer, toggleTimer, selectTimer, update, deleteTimer };
+export { addTimer, toggleTimer, selectTimer, update, deleteTimer, resetTimer };

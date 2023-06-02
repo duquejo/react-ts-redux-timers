@@ -5,14 +5,10 @@ import throttle from 'lodash/throttle';
 import { devToolsEnhancer } from 'redux-devtools-extension';
 
 import { update } from '../actions';
-import {
-	loadState,
-	saveState,
-} from '../utils';
+import { loadState, saveState } from '../utils';
 import rootReducer from '../reducers';
-import { NewTimer } from '../components/NewTimer';
-import { ListTimers } from '../components/ListTimers';
 import { CONSTANTS_KEYS, CONSTANTS_VALUES } from '../types/constants';
+import { App } from '../components/App';
 
 const store: Store = createStore(
 	rootReducer,
@@ -37,8 +33,7 @@ export const ReduxProvider = (): JSX.Element => {
 
 	return (
 		<Provider store={store}>
-			<NewTimer />
-			<ListTimers />
+			<App />
 		</Provider>
 	);
 };

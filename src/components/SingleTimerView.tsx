@@ -31,10 +31,13 @@ export const SingleTimerView: FC<ITimerViewProps> = ({ index, timer }) => {
 				>
 					{timer.isRunning ? 'Stop' : 'Start'}
 				</button>
-				<button className="bg-cyan-800" onClick={handleOnClickReset}>
+				<button className="bg-cyan-800/80" onClick={handleOnClickReset}>
 					Reset
 				</button>
-				<button className="bg-black" onClick={handleOnClickDelete}>
+				<button
+					className="bg-slate-900/80"
+					onClick={handleOnClickDelete}
+				>
 					Delete
 				</button>
 			</div>

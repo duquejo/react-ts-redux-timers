@@ -4,19 +4,19 @@
 
 @layer base {
 	body {
-		@apply text-slate-900 bg-slate-300;
+		@apply text-slate-900 bg-gradient-to-r from-blue-200 to-cyan-200;
 	}
 
 	h1 {
-		@apply text-3xl text-center xl:text-left;
+		@apply text-3xl text-center lg:text-left;
 	}
 
 	h2 {
-		@apply text-2xl text-center xl:text-left;
+		@apply text-2xl text-center lg:text-left;
 	}
 
 	.new-timer {
-		@apply flex justify-center mb-4 xl:mt-3;
+		@apply flex justify-center lg:mt-0 mt-3;
 	}
 
 	.new-timer > input {
@@ -24,34 +24,38 @@
 	}
 
 	.new-timer > button {
-		@apply text-base rounded-tr-2xl rounded-br-2xl border bg-slate-900 m-0 text-white font-bold px-3;
+		@apply text-base rounded-tr-2xl rounded-br-2xl border bg-slate-900/80 m-0 text-white font-bold px-3;
+	}
+
+	.timer-container {
+		@apply mt-5 overflow-y-auto max-h-[35vh] lg:max-h-[60vh];
 	}
 
 	.timer-view {
-		@apply w-56 grid grid-cols-2 items-baseline;
+		@apply grid grid-cols-2 items-center m-auto;
 	}
 
 	.timer-view > h1 {
-		@apply m-4 text-center tabular-nums text-xl font-mono font-extralight;
+		@apply my-4 text-center tabular-nums font-mono font-extralight bg-gray-100/60 rounded-lg text-lg;
 	}
 
 	.timer-view > h2 {
-		@apply font-bold text-center;
+		@apply font-bold text-center uppercase text-lg;
 	}
 
 	.timer-buttons {
-		@apply flex col-span-2 text-center justify-between;
+		@apply flex col-span-2 text-center justify-between w-56 mx-auto mb-2 last:mb-0;
 	}
 
 	.timer-buttons > button {
-		@apply px-1 py-2 mx-2 rounded-xl font-semibold text-sm w-16 shadow-sm text-white last:mx-0 first:mx-0;
+		@apply px-1 py-1 rounded-xl font-semibold text-sm w-16 shadow-sm text-white last:mx-0 first:mx-0;
 	}
 
 	.timer-buttons > button.isRunning {
-		@apply bg-gradient-to-r from-green-700 to-emerald-700;
+		@apply bg-gradient-to-r from-green-700/80 to-emerald-700/80;
 	}
 
 	.timer-buttons > button.isStopped {
-		@apply bg-gradient-to-r from-rose-700 to-red-700;
+		@apply bg-gradient-to-r from-rose-700/80 to-red-700/80;
 	}
 }

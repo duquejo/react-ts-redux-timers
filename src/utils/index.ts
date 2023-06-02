@@ -1,4 +1,10 @@
-import { CONSTANTS_KEYS, CONSTANTS_VALUES } from '../types/constants';
+import type { Timer } from '../model/Timer';
+import {
+	CONSTANTS_KEYS,
+	CONSTANTS_VALUES,
+	CHARTJS_CONFIG,
+} from '../types/constants';
+import type { ChartData } from 'chart.js';
 
 /**
  * The function formats a given time in milliseconds into a string in the format of
@@ -58,4 +64,28 @@ export const saveState = (state: any): void => {
 	} catch (error) {
 		console.error('Error saving data');
 	}
+};
+
+export const parseTimersToChartJs = (
+	timers: Array<Timer>
+): ChartData<'doughnut'> => {
+	let chartJs: { labels: Array<string>; dataset: Array<number> } = {
+		labels: [],
+		dataset: [],
+	};
+
+	timers.forEach((timer: Timer) => {
+		chartJs.labels!.push(timer.name);
+		chartJs.dataset.push(timer.time);
+	});
+
+	return {
+		labels: chartJs.labels,
+		datasets: [
+			{
+				data: chartJs.dataset,
+				...CHARTJS_CONFIG.chart,
+			},
+		],
+	};
 };
